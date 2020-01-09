@@ -17,4 +17,7 @@
     <string name="entrar_desc">Digite seus dados para entrar.</string>
     <string name="button_entrar">Entrar</string>
     <string name="não_tem_conta">Não tem conta? Cadastre-se!</string>
+    <string name="sucesso_cadastro">Sucesso ao ser cadastrado, clique no botão abaixo para retronar ao login.</string>
+    <string name="retornar_login">Retornarao Login</string>
+    <string name="image_ok">sucesso</string>
 </resources>
