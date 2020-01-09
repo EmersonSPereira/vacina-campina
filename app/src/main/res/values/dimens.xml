@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="largunra_plain_text">320</dimen>
+    <dimen name="drawable_padding">10dp</dimen>
+</resources>

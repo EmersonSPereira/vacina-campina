@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "511109174429",
+    "firebase_url": "https://vacina-campina.firebaseio.com",
+    "project_id": "vacina-campina",
+    "storage_bucket": "vacina-campina.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511109174429:android:895e648d5d44dcba7cf074",
+        "android_client_info": {
+          "package_name": "br.com.vacinacampina"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "511109174429-hp63q62kf2i8rd273d30858ghpqdeqev.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.vacinacampina",
+            "certificate_hash": "d28fb5c6c581466d81fc2929f791c305c88cb472"
+          }
+        },
+        {
+          "client_id": "511109174429-vvnoen5chrskcc73lpq50nvfdht34ua9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuRH2Ircl_owXS_jFo6N_U9aD0RY54v1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "511109174429-vvnoen5chrskcc73lpq50nvfdht34ua9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

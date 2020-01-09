@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Vacina Campina</string>
+    <string name="slide_vacina">Tenha todas as informações sobre as vacinas e sua importância.</string>
+    <string name="vacina">vacina</string>
+    <string name="slide_familia">Tenha o controle das vacinas de toda sua fámilia na palma da mão..</string>
+    <string name="maps">maps</string>
+    <string name="slide_maps">Encontre pontos de vacinação, por toda cidade.</string>
+    <string name="titulo_slider_cadastro">Crie uma conta é gratuito!</string>
+    <string name="descricao_slider_cadastro">Junte-se a várias pessoas que entendem a impotância da vacinação.</string>
+    <string name="button_cadastro">Cadastre-se</string>
+    <string name="textView_ja_tenho_conta">Já Tenho Conta</string>
+    <string name="crie_sua_conta">Crie sua conta é grátis.</string>
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
+    <string name="nome">Nome</string>
+    <string name="button_cadastrar">cadastrar</string>
+    <string name="entrar_desc">Digite seus dados para entrar.</string>
+    <string name="button_entrar">Entrar</string>
+    <string name="não_tem_conta">Não tem conta? Cadastre-se!</string>
+</resources>
