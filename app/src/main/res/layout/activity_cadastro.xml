@@ -65,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/editText_email"
+        android:id="@+id/editText_email_login"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="32dp"
@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editText_nome" />
 
     <EditText
-        android:id="@+id/editText_senha"
+        android:id="@+id/editText_senha_login"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="32dp"
@@ -98,7 +98,7 @@
         android:textColorHint="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_email" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_email_login" />
 
     <Button
         android:id="@+id/button_cadastrar"
@@ -112,7 +112,7 @@
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_senha" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_senha_login" />
 
     <ProgressBar
         android:id="@+id/progressBar_cadastro"

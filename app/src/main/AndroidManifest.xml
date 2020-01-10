@@ -11,16 +11,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.CadastroActivity"
-            android:theme="@style/AppThemeNoActionBar"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".activity.LoginActivity"
-            android:theme="@style/AppThemeNoActionBar"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.TelaPrincipalActivity"
+            android:label="@string/title_activity_tela_principal"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activity.CadastroActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.Intro"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Intro">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
