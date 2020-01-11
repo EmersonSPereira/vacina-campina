@@ -34,4 +34,8 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="esqueceu_sua_senha">Esqueceu sua senha?</string>
+    <string name="texto_recuperar_senha">Digite seu e-mail e clique em recuperar senha para receber um e-mail de recuperação.</string>
+    <string name="button_recuperar_senha">Recuperar Senha</string>
+    <string name="retornar_ao_login">Retornar ao Login</string>
 </resources>

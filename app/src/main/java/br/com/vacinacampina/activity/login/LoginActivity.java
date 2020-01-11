@@ -1,4 +1,4 @@
-package br.com.vacinacampina.activity;
+package br.com.vacinacampina.activity.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 import br.com.vacinacampina.R;
+import br.com.vacinacampina.activity.CadastroActivity;
+import br.com.vacinacampina.activity.TelaPrincipalActivity;
 import br.com.vacinacampina.config.FirebaseConfig;
 
 public class LoginActivity extends AppCompatActivity {
@@ -101,5 +103,9 @@ public class LoginActivity extends AppCompatActivity {
             valido = false;
         }
         return valido;
+    }
+
+    public void esqueceuSenha(View view){
+        startActivity(new Intent(this, RecuperarSenhaActivity.class));
     }
 }

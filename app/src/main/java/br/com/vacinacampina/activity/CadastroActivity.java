@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 import br.com.vacinacampina.R;
+import br.com.vacinacampina.activity.login.LoginActivity;
 import br.com.vacinacampina.config.FirebaseConfig;
 import br.com.vacinacampina.model.Usuario;
 
