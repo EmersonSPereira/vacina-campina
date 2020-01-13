@@ -11,13 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.login.RecuperarSenhaActivity"
+        <activity android:name=".activity.TelaPrincipalActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-             />
+            android:theme="@style/AppThemeNoActionBar"/>
         <activity
-            android:name=".activity.TelaPrincipalActivity"
-            android:label="@string/title_activity_tela_principal"
+            android:name=".activity.login.RecuperarSenhaActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

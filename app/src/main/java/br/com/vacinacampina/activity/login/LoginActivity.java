@@ -18,8 +18,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 import br.com.vacinacampina.R;
-import br.com.vacinacampina.activity.CadastroActivity;
 import br.com.vacinacampina.activity.TelaPrincipalActivity;
+import br.com.vacinacampina.activity.CadastroActivity;
 import br.com.vacinacampina.config.FirebaseConfig;
 
 public class LoginActivity extends AppCompatActivity {

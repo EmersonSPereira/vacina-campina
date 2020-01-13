@@ -38,4 +38,14 @@
     <string name="texto_recuperar_senha">Digite seu e-mail e clique em recuperar senha para receber um e-mail de recuperação.</string>
     <string name="button_recuperar_senha">Recuperar Senha</string>
     <string name="retornar_ao_login">Retornar ao Login</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="cartao_vacina">Cartão</string>
+    <string name="vacinas">Vacinas</string>
+    <string name="postos">Postos</string>
+    <string name="conta">Conta</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

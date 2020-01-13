@@ -1,64 +1,75 @@
 package br.com.vacinacampina.activity;
 
-import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.view.View;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.view.Menu;
+import android.os.Bundle;
+import android.view.MenuItem;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import br.com.vacinacampina.R;
+import br.com.vacinacampina.fragment.CartaoFragment;
+import br.com.vacinacampina.fragment.ContaFragment;
+import br.com.vacinacampina.fragment.PostosFragment;
+import br.com.vacinacampina.fragment.VacinaFragment;
 
 public class TelaPrincipalActivity extends AppCompatActivity {
-
-    private AppBarConfiguration mAppBarConfiguration;
-
+    public static final int PRIMEIRO_ITEM_MENU = 0;
+    BottomNavigationViewEx bottomNavigationViewEx;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_principal);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
-                .setDrawerLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        //Habilitando a navegação do menu
+        bottomNavigationViewEx = findViewById(R.id.bottom_navigation);
+        habilitarNavegacao(bottomNavigationViewEx);
+        setFragmentInicial();
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.tela_principal, menu);
-        return true;
+    private void habilitarNavegacao(BottomNavigationViewEx viewEx){
+        viewEx.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                switch (menuItem.getItemId()){
+
+                    case R.id.navigation_cartao:
+                        fragmentTransaction.replace(R.id.frameLayout_principal, new CartaoFragment()).commit();
+                        return true;
+                        case R.id.navigation_vacinas:
+                        fragmentTransaction.replace(R.id.frameLayout_principal, new VacinaFragment()).commit();
+                        return true;
+                        case R.id.navigation_mapa_postos:
+                        fragmentTransaction.replace(R.id.frameLayout_principal, new PostosFragment()).commit();
+                        return true;
+                        case R.id.navigation_usuarios:
+                        fragmentTransaction.replace(R.id.frameLayout_principal, new ContaFragment()).commit();
+                        return true;
+
+                        default: return false;
+
+                }
+            }
+        });
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+    private void setFragmentInicial(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout_principal, new CartaoFragment()).commit();
+        bottomNavigationViewEx.getMenu().getItem(PRIMEIRO_ITEM_MENU).setChecked(true);
     }
+
+
+
 }

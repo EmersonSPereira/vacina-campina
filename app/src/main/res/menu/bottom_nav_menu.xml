@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_cartao"
+        android:icon="@drawable/ic_healthcare_and_medical"
+        android:title="@string/cartao_vacina" />
+
+    <item
+        android:id="@+id/navigation_vacinas"
+        android:icon="@drawable/ic_vaccination"
+        android:title="@string/vacinas" />
+
+    <item
+        android:id="@+id/navigation_mapa_postos"
+        android:icon="@drawable/ic_place_black_24dp"
+        android:title="@string/postos" />
+    <item
+        android:id="@+id/navigation_usuarios"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="@string/conta" />
+
+</menu>
