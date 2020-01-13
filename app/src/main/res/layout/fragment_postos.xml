@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.PostosFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <fragment
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:id="@+id/maps_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/postos"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        tools:text="@string/postos" />
-
+        android:layout_height="match_parent"/>
 </FrameLayout>

@@ -11,6 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCFwganns6xacqpVf64_UaHwWmoeIYNKRw"/>
+
         <activity android:name=".activity.TelaPrincipalActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar"/>
@@ -37,5 +43,10 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
+
 
 </manifest>

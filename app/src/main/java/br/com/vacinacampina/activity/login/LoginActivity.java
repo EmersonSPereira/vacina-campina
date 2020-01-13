@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         campoSenha = findViewById(R.id.editText_senha_login);
         buttonEntrar = findViewById(R.id.button_entrar);
         progressBar = findViewById(R.id.progressBar_login);
+
         buttonEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +51,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    protected void onResume(){
+        super.onResume();
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
     /**
