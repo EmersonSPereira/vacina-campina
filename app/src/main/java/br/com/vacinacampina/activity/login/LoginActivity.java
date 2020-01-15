@@ -35,22 +35,26 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
-        campoEmail = findViewById(R.id.editText_email_login);
-        campoSenha = findViewById(R.id.editText_senha_login);
-        buttonEntrar = findViewById(R.id.button_entrar);
-        progressBar = findViewById(R.id.progressBar_login);
+        if (FirebaseConfig.getUsuarioLogado() != null) {
+            startActivity(new Intent(this, TelaPrincipalActivity.class));
+        }
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_login);
+            campoEmail = findViewById(R.id.editText_email_login);
+            campoSenha = findViewById(R.id.editText_senha_login);
+            buttonEntrar = findViewById(R.id.button_entrar);
+            progressBar = findViewById(R.id.progressBar_login);
 
-        buttonEntrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(validaCampos(campoEmail.getText().toString(), campoSenha.getText().toString())) {
-                    logar();
+            buttonEntrar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (validaCampos(campoEmail.getText().toString(), campoSenha.getText().toString())) {
+                        logar();
+                    }
                 }
-            }
-        });
+            });
+
     }
 
     protected void onResume(){

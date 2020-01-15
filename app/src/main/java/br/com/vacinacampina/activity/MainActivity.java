@@ -1,4 +1,4 @@
-package br.com.vacinacampina;
+package br.com.vacinacampina.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,7 +9,7 @@ import android.view.View;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 
-import br.com.vacinacampina.activity.CadastroActivity;
+import br.com.vacinacampina.R;
 import br.com.vacinacampina.activity.login.LoginActivity;
 
 public class MainActivity extends IntroActivity {

@@ -17,7 +17,7 @@
         android:title="@string/postos" />
     <item
         android:id="@+id/navigation_usuarios"
-        android:icon="@drawable/ic_person_black_24dp"
+        android:icon="@drawable/ic_person_white_24dp"
         android:title="@string/conta" />
 
 </menu>

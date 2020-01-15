@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,11 +19,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 import br.com.vacinacampina.R;
 import br.com.vacinacampina.activity.login.LoginActivity;
 import br.com.vacinacampina.config.FirebaseConfig;
 import br.com.vacinacampina.model.Usuario;
+import br.com.vacinacampina.service.UsuarioService;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -43,7 +46,7 @@ public class CadastroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-        campoNome = findViewById(R.id.editText_nome);
+        campoNome = findViewById(R.id.editText_nome_editar);
         campoEmail = findViewById(R.id.editText_email_login);
         campoSenha = findViewById(R.id.editText_senha_login);
         btnCadastrar = findViewById(R.id.button_cadastrar);
@@ -65,7 +68,7 @@ public class CadastroActivity extends AppCompatActivity {
      */
     private void cadastrarUsuario() {
         progressBar.setVisibility(View.VISIBLE);
-        Usuario usuario = new Usuario(campoNome.getText().toString(),
+        final Usuario usuario = new Usuario(campoNome.getText().toString(),
                 campoEmail.getText().toString(),
                 campoSenha.getText().toString());
         FirebaseConfig.getAuth().createUserWithEmailAndPassword(usuario.getEmail(), usuario.getSenha())
@@ -74,6 +77,7 @@ public class CadastroActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(task.isSuccessful()){
+                            UsuarioService.atualizarUsuario(usuario.getNome(),CadastroActivity.this);
                             setContentView(R.layout.activity_sucesso_cadastro);
                         } else {
                             progressBar.setVisibility(View.GONE);
