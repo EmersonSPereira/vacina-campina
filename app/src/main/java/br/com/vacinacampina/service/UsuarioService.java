@@ -27,7 +27,6 @@ public class UsuarioService {
 
     public static void atualizarUsuario(String nome, final Context context){
 
-
         UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
                 .setDisplayName(nome).build();
         getUsuarioLogado().updateProfile(profileUpdate).addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -121,7 +121,7 @@ public class ContaFragment extends Fragment {
     private void carregarDados() {
         textViewNome.setText(UsuarioService.getUsuarioLogado().getDisplayName());
         textViewEmail.setText(UsuarioService.getUsuarioLogado().getEmail());
-
+        progressBar_foto.setVisibility(View.VISIBLE);
         UsuarioService.getUsuarioLogado().reload().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -130,7 +130,6 @@ public class ContaFragment extends Fragment {
                 if (task.isSuccessful()) {
                     Uri fotoUrl = UsuarioService.getUsuarioLogado().getPhotoUrl();
                     if (fotoUrl != null) {
-                        progressBar_foto.setVisibility(View.VISIBLE);
                         Glide.with(getContext()).load(fotoUrl).listener(new RequestListener<Drawable>() {
                             @Override
                             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
@@ -146,6 +145,7 @@ public class ContaFragment extends Fragment {
                         }).into(circleImageViewFoto);
                     }
                 }else {
+                    progressBar_foto.setVisibility(View.GONE);
                     Toast.makeText(getContext(), getResources().getString(R.string.erro_carregar_dados),Toast.LENGTH_LONG).show();
                 }
             }
