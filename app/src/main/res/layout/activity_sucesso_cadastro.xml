@@ -23,7 +23,7 @@
     <TextView
         android:id="@+id/textView_sucesso"
         android:layout_width="0dp"
-        android:layout_height="135dp"
+        android:layout_height="92dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="32dp"
@@ -36,19 +36,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_sucesso" />
 
+    <TextView
+        android:id="@+id/textView_sucesso_email"
+        android:layout_width="0dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.861"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_sucesso" />
+
     <Button
         android:id="@+id/button_retornar_login"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/round_button"
+        android:drawableStart="@drawable/ic_chevron_left_black_24dp"
         android:onClick="btnEntrar"
-        android:text="@string/retornar_login"
+        android:text="@string/retornar_ao_login"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_sucesso" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_sucesso_email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

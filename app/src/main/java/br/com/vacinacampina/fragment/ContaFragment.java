@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -19,23 +20,26 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.vacinacampina.R;
 import br.com.vacinacampina.activity.EditarContaActivity;
-import br.com.vacinacampina.activity.TelaPrincipalActivity;
 import br.com.vacinacampina.activity.login.LoginActivity;
 import br.com.vacinacampina.adapter.AdapterOpcoes;
 import br.com.vacinacampina.config.FirebaseConfig;
 import br.com.vacinacampina.config.RecyclerItemClickListener;
+import br.com.vacinacampina.service.UsuarioService;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -115,27 +119,39 @@ public class ContaFragment extends Fragment {
     }
 
     private void carregarDados() {
-        textViewNome.setText(FirebaseConfig.getUsuarioLogado().getDisplayName());
-        textViewEmail.setText(FirebaseConfig.getUsuarioLogado().getEmail());
+        textViewNome.setText(UsuarioService.getUsuarioLogado().getDisplayName());
+        textViewEmail.setText(UsuarioService.getUsuarioLogado().getEmail());
 
-        Uri fotoUrl = FirebaseConfig.getUsuarioLogado().getPhotoUrl();
+        UsuarioService.getUsuarioLogado().reload().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
 
-        if(fotoUrl != null ) {
-            progressBar_foto.setVisibility(View.VISIBLE);
-            Glide.with(getContext()).load(fotoUrl).listener(new RequestListener<Drawable>() {
-                @Override
-                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                    progressBar_foto.setVisibility(View.GONE);
-                    return false;
+
+                if (task.isSuccessful()) {
+                    Uri fotoUrl = UsuarioService.getUsuarioLogado().getPhotoUrl();
+                    if (fotoUrl != null) {
+                        progressBar_foto.setVisibility(View.VISIBLE);
+                        Glide.with(getContext()).load(fotoUrl).listener(new RequestListener<Drawable>() {
+                            @Override
+                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                                progressBar_foto.setVisibility(View.GONE);
+                                return false;
+                            }
+
+                            @Override
+                            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                                progressBar_foto.setVisibility(View.GONE);
+                                return false;
+                            }
+                        }).into(circleImageViewFoto);
+                    }
+                }else {
+                    Toast.makeText(getContext(), getResources().getString(R.string.erro_carregar_dados),Toast.LENGTH_LONG).show();
                 }
+            }
+        });
 
-                @Override
-                public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                    progressBar_foto.setVisibility(View.GONE);
-                    return false;
-                }
-            }).into(circleImageViewFoto);
-        }
+
     }
 
     @Override

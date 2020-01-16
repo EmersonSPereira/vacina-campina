@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
@@ -21,6 +22,7 @@ import br.com.vacinacampina.R;
 import br.com.vacinacampina.activity.TelaPrincipalActivity;
 import br.com.vacinacampina.activity.CadastroActivity;
 import br.com.vacinacampina.config.FirebaseConfig;
+import br.com.vacinacampina.service.UsuarioService;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String O_CAMPO_NOME_NÃO_PODE_SER_VAZIO = "O campo nome não pode ser vazio.";
@@ -36,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if (FirebaseConfig.getUsuarioLogado() != null) {
+        if (UsuarioService.getUsuarioLogado() != null && UsuarioService.getUsuarioLogado().isEmailVerified()) {
             startActivity(new Intent(this, TelaPrincipalActivity.class));
         }
             super.onCreate(savedInstanceState);

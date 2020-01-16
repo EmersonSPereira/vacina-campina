@@ -57,10 +57,7 @@ public class EditarContaActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar_editar);
         progressBar_foto = findViewById(R.id.progressBar_carregar_foto_2);
 
-
-        FirebaseConfig.getUsuarioLogado().getPhotoUrl();
-
-        Uri fotoUrl = FirebaseConfig.getUsuarioLogado().getPhotoUrl();
+        Uri fotoUrl = UsuarioService.getUsuarioLogado().getPhotoUrl();
 
         if(fotoUrl != null ) {
             progressBar_foto.setVisibility(View.VISIBLE);
@@ -79,7 +76,7 @@ public class EditarContaActivity extends AppCompatActivity {
             }).into(circleImageViewFoto);
         }
 
-        editTextNome.setText(FirebaseConfig.getUsuarioLogado().getDisplayName());
+        editTextNome.setText(UsuarioService.getUsuarioLogado().getDisplayName());
 
 
         buttonAlterFoto.setOnClickListener(new View.OnClickListener() {
@@ -155,7 +152,6 @@ public class EditarContaActivity extends AppCompatActivity {
                                 throw task.getException();
 
                             }
-                            // Continue with the task to get the download URL
                             return imagemRef.getDownloadUrl();
 
                         }
@@ -165,8 +161,7 @@ public class EditarContaActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                               progressBar.setVisibility(View.GONE);
                                 UsuarioService.atualizarUsuario(editTextNome.getText().toString(),task.getResult(),EditarContaActivity.this);
-
-                                finish();
+                                EditarContaActivity.super.onBackPressed();
 
 
                             }

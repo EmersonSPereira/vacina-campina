@@ -42,7 +42,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="35dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/round_button"
         android:fontFamily="sans-serif-condensed-medium"
         android:onClick="btnCadastrar"
         android:text="@string/button_cadastro"

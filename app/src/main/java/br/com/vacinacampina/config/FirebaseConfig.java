@@ -27,7 +27,5 @@ public class FirebaseConfig {
             return storageReference;
     }
 
-    public static FirebaseUser getUsuarioLogado(){
-        return getAuth().getCurrentUser();
-    }
+
 }
