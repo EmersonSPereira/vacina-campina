@@ -32,6 +32,11 @@ public class TelaPrincipalActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
     private void habilitarNavegacao(BottomNavigationViewEx viewEx){
         viewEx.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
