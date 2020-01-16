@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,10 +37,17 @@ public class LoginActivity extends AppCompatActivity {
     private Button buttonEntrar;
     private ProgressBar progressBar;
 
+    private SharedPreferences preferencias;
+    private SharedPreferences.Editor editorPreferencias;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if (UsuarioService.getUsuarioLogado() != null && UsuarioService.getUsuarioLogado().isEmailVerified()) {
+        preferencias = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+        editorPreferencias = preferencias.edit();
+
+        if (UsuarioService.getUsuarioLogado() != null
+                && preferencias.getBoolean(UsuarioService.getUsuarioLogado().getUid(),false)) {
             startActivity(new Intent(this, TelaPrincipalActivity.class));
         }
             super.onCreate(savedInstanceState);
@@ -47,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
             campoSenha = findViewById(R.id.editText_senha_login);
             buttonEntrar = findViewById(R.id.button_entrar);
             progressBar = findViewById(R.id.progressBar_login);
+
 
             buttonEntrar.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -75,6 +85,9 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            //salvando primeiro login localmente
+                            editorPreferencias.putBoolean(UsuarioService.getUsuarioLogado().getUid(),true);
+                            editorPreferencias.commit();
                             startActivity(new Intent(LoginActivity.this, TelaPrincipalActivity.class));
                         }else {
                             progressBar.setVisibility(View.INVISIBLE);

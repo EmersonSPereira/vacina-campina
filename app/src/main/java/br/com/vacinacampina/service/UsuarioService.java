@@ -21,43 +21,44 @@ public class UsuarioService {
 
     private static final String TAG_ATUALIZAR_USUARIO = "Atualizar Usuário";
 
-    public static FirebaseUser getUsuarioLogado(){
+    public static FirebaseUser getUsuarioLogado() {
         return FirebaseConfig.getAuth().getCurrentUser();
     }
 
-    public static void atualizarUsuario(String nome, final Context context){
+    public static void atualizarUsuario(String nome, final Context context) {
 
         UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
                 .setDisplayName(nome).build();
         getUsuarioLogado().updateProfile(profileUpdate).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(context,
-                            context.getResources().getString(R.string.sucesso_atualizar_dados),
-                            Toast.LENGTH_LONG).show();
+                if (task.isSuccessful()) {
+                    Log.e(TAG_ATUALIZAR_USUARIO, context.getResources().getString(R.string.sucesso_atualizar_dados), task.getException());
+
                 }
             }
         });
     }
 
-    public static void atualizarUsuario(String nome, Uri uri,final Context context){
+    public static void atualizarUsuario(String nome, Uri uri, final Context context) {
 
         UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
                 .setDisplayName(nome)
                 .setPhotoUri(uri).build();
-       getUsuarioLogado().updateProfile(profileUpdate).addOnCompleteListener(new OnCompleteListener<Void>() {
+        getUsuarioLogado().updateProfile(profileUpdate).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Log.e(TAG_ATUALIZAR_USUARIO,  context.getResources().getString(R.string.enviado_email_verificacao), task.getException());
+                if (task.isSuccessful()) {
+                    Toast.makeText(context,
+                            context.getResources().getString(R.string.sucesso_atualizar_dados),
+                            Toast.LENGTH_LONG).show();
 
                 }
             }
         });
     }
 
-    public static void deslogarUsuario(){
+    public static void deslogarUsuario() {
 
         FirebaseConfig.getAuth().signOut();
     }
