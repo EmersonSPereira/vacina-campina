@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.EditarContaActivity"></activity>
+        <activity android:name=".activity.VacinaDetalheActivity"></activity>
+        <activity android:name=".activity.EditarContaActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

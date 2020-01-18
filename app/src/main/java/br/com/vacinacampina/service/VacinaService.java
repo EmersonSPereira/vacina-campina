@@ -17,7 +17,7 @@ import br.com.vacinacampina.model.Vacina;
 
 public class VacinaService {
 
-    public static final String VACINA = "Vacianas";
+    public static final String VACINA = "vacinas";
     public static final String NOME = "nome";
     private DatabaseReference vacinaReference;
 

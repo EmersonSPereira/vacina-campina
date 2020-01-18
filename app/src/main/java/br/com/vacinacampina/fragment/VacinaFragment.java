@@ -1,6 +1,7 @@
 package br.com.vacinacampina.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.vacinacampina.R;
+import br.com.vacinacampina.activity.VacinaDetalheActivity;
 import br.com.vacinacampina.adapter.AdapterVacina;
+import br.com.vacinacampina.config.RecyclerItemClickListener;
 import br.com.vacinacampina.model.Vacina;
 import br.com.vacinacampina.service.VacinaService;
 
@@ -35,6 +39,7 @@ import br.com.vacinacampina.service.VacinaService;
 public class VacinaFragment extends Fragment {
 
     public static final String BUSCAR_VACINA = "Buscar Vacina";
+    public static final String VACINA = "vacina";
     private SearchView searchViewPesquisa;
     private RecyclerView recyclerViewVacina;
 
@@ -95,6 +100,23 @@ public class VacinaFragment extends Fragment {
         adapterVacina = new AdapterVacina(vacinas, getActivity());
         recyclerViewVacina.addItemDecoration(new DividerItemDecoration(view.getContext(), LinearLayout.VERTICAL));
         recyclerViewVacina.setAdapter(adapterVacina);
+
+        recyclerViewVacina.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), recyclerViewVacina, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                startActivity(new Intent(getContext(), VacinaDetalheActivity.class).putExtra(VACINA,vacinas.get(position)));
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        }));
     }
 
     private List<Vacina> consultarVacinaPorNome(String textoDigitado) {

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.VacinaDetalheActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView_nome_vacina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="Vacina gripe (influenza) — trivalente ou quadrivalente"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="O que previne:"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_previne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="Infecção pelo vírus Influenza (que causa a gripe) contidos nas vacinas."
+                android:textColor="@color/cor_texto"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="Do que é feita:"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_composicao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="Trata-se de vacina inativada, portanto, não tem como causar a doença.  Sua formulação contém proteínas de diferentes cepas do vírus Influenza definidas ano a ano conforme orientação da Organização Mundial da Saúde (OMS), que realiza a vigilância nos hemisférios Norte e Sul. As cepas vacinais são cultivadas em ovos embrionados de galinha e, por isso, as vacinas contêm traços de proteínas do ovo.  Existe vacina trivalente, com duas cepas de vírus A e uma cepa de vírus B, e vacina quadrivalente, com duas cepas de vírus A e duas cepas de vírus B.  Quando a apresentação é monodose, ou seja, em seringas prontas com doses individuais, a vacina não contém conservantes. Já a apresentação multidose, como acontece com outras vacinas, contém timerosal (derivado do mercúrio) como conservante.  Podem conter traços de formaldeído e antibióticos (geralmente gentamicina ou neomicina), utilizados durante a fabricação para prevenir contaminação por germes. Também contém cloreto de sódio e água para injeção."
+                android:textColor="@color/cor_texto"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="Indicação:"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_indicacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="Para todas as pessoas a partir de 6 meses de vida, principalmente aquelas de maior risco para infecções respiratórias, que podem ter complicações e a forma grave da doença."
+                android:textColor="@color/cor_texto"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="Esquemas de doses:"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_doses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="Para crianças de 6 meses a 9 anos de idade: duas doses na primeira vez em que forem vacinadas (primovacinação), com intervalo de um mês e revacinação anual. Para crianças maiores de 9 anos, adolescentes, adultos e idosos: dose única anual. Para menores de 3 anos, na dependência da bula do fabricante, o volume a ser aplicado em cada dose pode ser de 0,25 mL ou 0,5 mL."
+                android:textColor="@color/cor_texto"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="Via de aplicação:"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_aplicacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="Intramuscular."
+                android:textColor="@color/cor_texto"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="Cuidados antes, durante e após a vacinação:"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_cuidados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="Em caso de febre, deve-se adiar a vacinação até que ocorra a melhora. Pessoas com história de alergia grave ao ovo de galinha, com sinais de anafilaxia, devem receber vacina em ambiente com condições de atendimento de reações anafiláticas e permanecer em observação por pelo menos 30 minutos. No caso de história de síndrome de Guillain-Barré (SGB) até seis semanas após a dose anterior da vacina, recomenda-se avaliação médica criteriosa sobre o risco-benefício antes de administrar nova dose. Excetuando os casos aqui citados, não são necessários cuidados especiais antes da vacinação. Compressas frias aliviam a reação no local da aplicação. Em casos mais intensos pode-se usar medicação para dor, sob recomendação médica. Qualquer sintoma grave e/ou inesperado após a vacinação deve ser notificado ao serviço que a realizou. Sintomas de eventos adversos persistentes, que se prolongam por mais que 72 horas (dependendo do sintoma), devem ser investigados para verificação de outras causas."
+                android:textColor="@color/cor_texto"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="Efeitos e eventos adversos:"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_efeitos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="10dp"
+                android:text="Manifestações locais como dor, vermelhidão e endurecimento ocorrem em 15% a 20% dos vacinados. Essas reações costumam ser leves e desaparecem em até 48 horas. Manifestações sistêmicas também são benignas e breves. Febre, mal-estar e dor muscular acometem 1% a 2% dos vacinados. Têm início de seis a 12 horas após a vacinação e persistem por um a dois dias, sendo mais comuns na primeira vez em que tomam a vacina. Reações anafiláticas são raríssimas. Sabe-se que a Síndrome de Guillain-Barré (SGB) pode ocorrer por mais de um motivo, mas em raras ocasiões seu surgimento coincidiu com a aplicação de uma vacina – nesses casos, surgiu entre um dia e seis semanas após a vacinação. Com exceção de uma vacina específica para gripe suína de 1976, todos os demais estudos que buscaram relação de causa entre vacinas influenza e SGB obtiveram resultados contraditórios, alguns encontrando essa relação e outros não. Até hoje não se sabe se a vacina influenza pode de fato aumentar o risco de recorrência da SGB em indivíduos que já a tiveram. Também é importante saber que alguns vírus podem desencadear essa síndrome."
+                android:textColor="@color/cor_texto"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

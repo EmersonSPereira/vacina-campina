@@ -48,7 +48,7 @@
     <string name="sair">Sair</string>
 
 
-<!--    Trazer todas as mensagens do sistema para ca-->
+    <!--    Trazer todas as mensagens do sistema para ca-->
     <string name="erro_upload_Image">Falha ao carregar imagem.</string>
     <string name="erro_carregar_dados">Falha ao carregar Dados, Tente Novamente.</string>
     <string name="sucesso_upload_Image">Imagem carregada cmo sucesso.</string>

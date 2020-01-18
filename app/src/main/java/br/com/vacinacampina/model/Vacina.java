@@ -1,6 +1,8 @@
 package br.com.vacinacampina.model;
 
-public class Vacina {
+import java.io.Serializable;
+
+public class Vacina implements Serializable {
 
     private String aplicacao;
     private String composicao;
