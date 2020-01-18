@@ -1,5 +1,8 @@
 package br.com.vacinacampina.service;
 
+import android.view.View;
+import android.widget.ProgressBar;
+
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
@@ -8,7 +11,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.vacinacampina.adapter.AdapterVacina;
@@ -27,7 +29,9 @@ public class VacinaService {
         return FirebaseConfig.getFirebaseDatabase().getReference(VACINA);
     }
 
-    public static void consultarVacinaPorNome(String textoDigitado,final List<Vacina> vacinas, final AdapterVacina adapterVacina) {
+    public static void consultarVacinaPorNome(String textoDigitado,final List<Vacina> vacinas, final AdapterVacina adapterVacina,
+                                              final ProgressBar progressBar) {
+        progressBar.setVisibility(View.VISIBLE);
        vacinas.clear();
         if (!textoDigitado.isEmpty()) {
             Query query = VacinaService.getDatabaseReference().orderByChild(NOME)
@@ -43,6 +47,7 @@ public class VacinaService {
 
 
                     adapterVacina.notifyDataSetChanged();
+                    progressBar.setVisibility(View.GONE);
                 }
 
                 @Override
@@ -52,13 +57,13 @@ public class VacinaService {
             });
 
         }else {
-            listarVacinas(vacinas,adapterVacina);
+            listarVacinas(vacinas,adapterVacina, progressBar);
         }
 
     }
 
-    public static void listarVacinas(final List<Vacina> vacinas, final AdapterVacina adapterVacina) {
-
+    public static void listarVacinas(final List<Vacina> vacinas, final AdapterVacina adapterVacina, final ProgressBar progressBar) {
+        progressBar.setVisibility(View.VISIBLE);
         Query query = VacinaService.getDatabaseReference().orderByChild(NOME);
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -69,6 +74,7 @@ public class VacinaService {
                 }
 
                 adapterVacina.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override

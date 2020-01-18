@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,6 +43,7 @@ public class VacinaFragment extends Fragment {
     public static final String VACINA = "vacina";
     private SearchView searchViewPesquisa;
     private RecyclerView recyclerViewVacina;
+    private ProgressBar progressBar_vacina;
 
     private AdapterVacina adapterVacina;
 
@@ -60,9 +62,10 @@ public class VacinaFragment extends Fragment {
 
         searchViewPesquisa = view.findViewById(R.id.searchView_vacina);
         recyclerViewVacina = view.findViewById(R.id.recycleView_vacina);
+        progressBar_vacina = view.findViewById(R.id.progressBar_vacina);
         configurarRecycleView(view);
         configurarSearchView();
-        VacinaService.listarVacinas(vacinas,adapterVacina);
+        VacinaService.listarVacinas(vacinas,adapterVacina,progressBar_vacina);
 
 
         return view;
@@ -75,7 +78,7 @@ public class VacinaFragment extends Fragment {
             @Override
             public boolean onQueryTextSubmit(String textoDigitado) {
 
-                VacinaService.consultarVacinaPorNome(textoDigitado,vacinas,adapterVacina);
+                VacinaService.consultarVacinaPorNome(textoDigitado,vacinas,adapterVacina,progressBar_vacina);
 
                 return true;
             }
@@ -83,7 +86,7 @@ public class VacinaFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String textoDigitado) {
 
-                VacinaService.consultarVacinaPorNome(textoDigitado,vacinas,adapterVacina);
+                VacinaService.consultarVacinaPorNome(textoDigitado,vacinas,adapterVacina,progressBar_vacina);
 
                 return true;
             }

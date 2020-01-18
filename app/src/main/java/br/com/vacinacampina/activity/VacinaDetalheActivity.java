@@ -7,13 +7,17 @@ import android.widget.TextView;
 
 import br.com.vacinacampina.R;
 import br.com.vacinacampina.model.Vacina;
+import br.com.vacinacampina.util.JustifiedTextView;
 
 public class VacinaDetalheActivity extends AppCompatActivity {
 
     public static final String VACINA = "vacina";
 
-    private TextView textViewNomeVacina, textViewPrevine, textViewComposicao, textViewIndicacao,
-            textViewDoses, textViewAplicacao, textViewCuidados, textViewEfeitos;
+    private TextView textViewNomeVacina;
+
+   private  JustifiedTextView textViewPrevine, textViewComposicao, textViewIndicacao,
+    textViewDoses, textViewAplicacao, textViewCuidados, textViewEfeitos;
+
 
     private Vacina vacina;
     @Override
@@ -43,6 +47,8 @@ public class VacinaDetalheActivity extends AppCompatActivity {
             textViewAplicacao.setText(vacina.getAplicacao());
             textViewCuidados.setText(vacina.getCuidados());
             textViewEfeitos.setText(vacina.getEfeitos());
+
+
         }
 
 

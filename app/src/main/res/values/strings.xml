@@ -60,4 +60,11 @@
     <string name="opcao">Opção</string>
     <string name="salvar">salvar</string>
     <string name="alterar_foto">Alterar foto</string>
+    <string name="o_que_previne">O que previne:</string>
+    <string name="do_que_feita">Do que é feita:</string>
+    <string name="indica_o">Indicação:</string>
+    <string name="esquemas_de_doses">Esquemas de doses:</string>
+    <string name="via_de_aplica_o">Via de aplicação:</string>
+    <string name="cuidados_antes_durante_e_ap_s_a_vacina_o">Cuidados antes, durante e após a vacinação:</string>
+    <string name="efeitos_e_eventos_adversos">Efeitos e eventos adversos:</string>
 </resources>
