@@ -67,4 +67,7 @@
     <string name="via_de_aplica_o">Via de aplicação:</string>
     <string name="cuidados_antes_durante_e_ap_s_a_vacina_o">Cuidados antes, durante e após a vacinação:</string>
     <string name="efeitos_e_eventos_adversos">Efeitos e eventos adversos:</string>
+    <string name="parentesco">Parentesco</string>
+    <string name="parentes">Parentes</string>
+    <string name="add_parente">+</string>
 </resources>
