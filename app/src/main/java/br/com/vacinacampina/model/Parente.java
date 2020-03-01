@@ -1,14 +1,27 @@
 package br.com.vacinacampina.model;
 
+import android.net.Uri;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class Parente {
+public class Parente implements Serializable {
 
+
+    private String id;
     private List<Cartao> cartao;
     private String nome;
     private Double idade;
     private String parentesco;
     private String urlFoto;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public List<Cartao> getCartao() {
         return cartao;

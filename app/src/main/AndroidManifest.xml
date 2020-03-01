@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.VacinaDetalheActivity"></activity>
+        <activity android:name=".activity.CadastroParenteActivity"></activity>
+        <activity android:name=".activity.VacinaDetalheActivity" />
         <activity android:name=".activity.EditarContaActivity" />
 
         <meta-data

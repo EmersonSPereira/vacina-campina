@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button_add_oparente"
+        android:id="@+id/button_add_parente"
         android:layout_width="32dp"
         android:layout_height="25dp"
         android:layout_marginEnd="30dp"
@@ -43,10 +43,10 @@
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/button_add_oparente"
-        app:layout_constraintEnd_toStartOf="@+id/button_add_oparente"
+        app:layout_constraintBottom_toBottomOf="@+id/button_add_parente"
+        app:layout_constraintEnd_toStartOf="@+id/button_add_parente"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button_add_oparente" />
+        app:layout_constraintTop_toTopOf="@+id/button_add_parente" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView_Parentes"

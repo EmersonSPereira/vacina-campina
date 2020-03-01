@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,11 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.vacinacampina.R;
+import br.com.vacinacampina.activity.CadastroParenteActivity;
 import br.com.vacinacampina.activity.VacinaDetalheActivity;
 import br.com.vacinacampina.adapter.AdapterParentes;
 import br.com.vacinacampina.adapter.AdapterVacina;
 import br.com.vacinacampina.config.RecyclerItemClickListener;
 import br.com.vacinacampina.model.Parente;
+import br.com.vacinacampina.service.ParenteService;
 import br.com.vacinacampina.service.UsuarioService;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -41,6 +44,7 @@ public class CartaoFragment extends Fragment {
     private RecyclerView recyclerViewParentes;
     private AdapterParentes adapterParentes;
     private List<Parente> parentes = new ArrayList<>();
+    private Button buttonCadastrarParente;
     public CartaoFragment() {
         // Required empty public constructor
     }
@@ -51,27 +55,29 @@ public class CartaoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        Parente parente = new Parente();
-        parente.setNome("Emerson");
-        parente.setParentesco("Filho");
-        parentes.add(parente);
-        parentes.add(parente);
-        parentes.add(parente);
-        parentes.add(parente);
-        parentes.add(parente);
-        parentes.add(parente);
-        parente.setUrlFoto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWosspj6-4TbCp5j231kBZMpVtehIMyLfgeo2jYbstUklx0mHZ&s");
+
+//
         View view = inflater.inflate(R.layout.fragment_cartao, container, false);
         textViewNome = view.findViewById(R.id.textView_nome_cartao);
         textViewParentesco= view.findViewById(R.id.textView_parentesco);
         circleImageView = view.findViewById(R.id.imageView_foto_cartao);
         recyclerViewParentes = view.findViewById(R.id.recycleView_Parentes);
+        buttonCadastrarParente = view.findViewById(R.id.button_add_parente);
+
+
+        buttonCadastrarParente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), CadastroParenteActivity.class));
+            }
+        });
 
 
         Glide.with(view).load(UsuarioService.getUsuarioLogado().getPhotoUrl()).into(circleImageView);
         textViewNome.setText(UsuarioService.getUsuarioLogado().getDisplayName());
         textViewParentesco.setText(STRING_VAZIA);
         configurarRecycleView(view);
+        ParenteService.listarParentes(parentes,adapterParentes);
         
 
         return view;
