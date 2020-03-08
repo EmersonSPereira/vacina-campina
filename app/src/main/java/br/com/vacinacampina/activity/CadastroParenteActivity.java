@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -30,14 +31,14 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.UUID;
 
 import br.com.vacinacampina.R;
 import br.com.vacinacampina.config.FirebaseConfig;
 import br.com.vacinacampina.model.Parente;
 import br.com.vacinacampina.service.ParenteService;
-import br.com.vacinacampina.service.UsuarioService;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CadastroParenteActivity extends AppCompatActivity {
@@ -51,7 +52,8 @@ public class CadastroParenteActivity extends AppCompatActivity {
     private EditText editTextNome;
     private Button buttonAlterFoto, buttonSalvar;
     private Bitmap imagem ;
-    private ProgressBar progressBar_foto;
+    private ProgressBar progressBarFoto;
+    private ProgressBar progressBarCadastroParente;
     private Spinner spinnerGrauParentesco;
     Parente parente;
 
@@ -65,34 +67,37 @@ public class CadastroParenteActivity extends AppCompatActivity {
         editTextNome = findViewById(R.id.editText_nome_parente_editar);
         buttonAlterFoto = findViewById(R.id.button_alterar_foto_parente);
         buttonSalvar = findViewById(R.id.button_salvar_edicao_parente);
-        progressBar_foto = findViewById(R.id.progressBar_carregar_foto_parente);
+        progressBarFoto = findViewById(R.id.progressBar_carregar_foto_parente);
+        progressBarCadastroParente = findViewById(R.id.progressBar_cadastro_parente);
+
         spinnerGrauParentesco = findViewById(R.id.spinner_parente);
 
         parente = new Parente();
 
         Bundle bundle = getIntent().getExtras();
-        if( bundle != null){
+        if( bundle != null) {
             parente = (Parente) bundle.getSerializable(PARENTE);
-            if(parente.getUrlFoto() != null || !parente.getUrlFoto().isEmpty()) {
-                progressBar_foto.setVisibility(View.VISIBLE);
+            if (parente.getUrlFoto() != null && !parente.getUrlFoto().isEmpty()) {
+                progressBarFoto.setVisibility(View.VISIBLE);
                 Glide.with(CadastroParenteActivity.this).load(parente.getUrlFoto()).listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        progressBar_foto.setVisibility(View.GONE);
+                        progressBarFoto.setVisibility(View.GONE);
                         return false;
                     }
 
                     @Override
                     public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        progressBar_foto.setVisibility(View.GONE);
+                        progressBarFoto.setVisibility(View.GONE);
                         return false;
                     }
                 }).into(circleImageViewFoto);
             }
 
             editTextNome.setText(parente.getNome());
+            spinnerGrauParentesco.setSelection(new ArrayList<>(Arrays.asList(getResources()
+                    .getStringArray(R.array.lista_parentes))).indexOf(parente.getParentesco()));
         }
-
 
 
 
@@ -145,6 +150,7 @@ public class CadastroParenteActivity extends AppCompatActivity {
 
     private void salvarAlteracoes() {
         buttonSalvar.setEnabled(false);
+        progressBarCadastroParente.setVisibility(View.VISIBLE);
         if (imagem != null) {
             //recupera dados da imagem para o firebase
             ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
@@ -181,7 +187,9 @@ public class CadastroParenteActivity extends AppCompatActivity {
                                 parente.setUrlFoto(task.getResult().toString());
                                 parente.setParentesco(spinnerGrauParentesco.getSelectedItem().toString());
                                 ParenteService.salvarAtualizarParente(parente);
+                                progressBarCadastroParente.setVisibility(View.GONE);
                                 Toast.makeText(CadastroParenteActivity.this, PARENTE_SALVO_COM_SUCESSO,Toast.LENGTH_LONG ).show();
+                                CadastroParenteActivity.super.onBackPressed();
 
 
                             }
@@ -197,10 +205,9 @@ public class CadastroParenteActivity extends AppCompatActivity {
             parente.setParentesco(spinnerGrauParentesco.getSelectedItem().toString());
 
             ParenteService.salvarAtualizarParente(parente);
-            Toast.makeText(CadastroParenteActivity.this,
-                    getResources().getString(R.string.sucesso_atualizar_dados),
-                    Toast.LENGTH_LONG).show();
-            finish();
+            progressBarCadastroParente.setVisibility(View.GONE);
+            Toast.makeText(CadastroParenteActivity.this, PARENTE_SALVO_COM_SUCESSO,Toast.LENGTH_LONG ).show();
+            CadastroParenteActivity.super.onBackPressed();
         }
     }
 

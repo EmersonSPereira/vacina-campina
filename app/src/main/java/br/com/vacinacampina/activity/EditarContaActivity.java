@@ -54,7 +54,7 @@ public class EditarContaActivity extends AppCompatActivity {
         editTextNome = findViewById(R.id.editText_nome_editar);
         buttonAlterFoto = findViewById(R.id.button_alterar_foto);
         buttonSalvar = findViewById(R.id.button_salvar_edicao);
-        progressBar = findViewById(R.id.progressBar_editar);
+        progressBar = findViewById(R.id.progressBar_cadastro_parente);
         progressBar_foto = findViewById(R.id.progressBar_carregar_foto_2);
 
         Uri fotoUrl = UsuarioService.getUsuarioLogado().getPhotoUrl();

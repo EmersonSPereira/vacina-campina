@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import br.com.vacinacampina.R;
+import br.com.vacinacampina.fragment.CartaoFragment;
 import br.com.vacinacampina.model.Parente;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -44,7 +46,11 @@ public class AdapterParentes extends RecyclerView.Adapter<AdapterParentes.Myview
 
        holder.textViewNome.setText(parente.getNome());
        holder.textViewParentesco.setText(parente.getParentesco());
-        Glide.with(context).load(parente.getUrlFoto()).into(holder.imageView);
+       if(parente.getUrlFoto() != null && !parente.getUrlFoto().isEmpty()) {
+           Glide.with(context).load(parente.getUrlFoto()).into(holder.imageView);
+       }else {
+           holder.imageView.setImageResource(R.drawable.profile);
+       }
 
     }
 

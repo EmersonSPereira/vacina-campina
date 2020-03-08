@@ -1,5 +1,8 @@
 package br.com.vacinacampina.service;
 
+import android.view.View;
+import android.widget.ProgressBar;
+
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
@@ -21,22 +24,28 @@ public class ParenteService {
 
     public static final String PARENTE = "parente";
 
-    public static void listarParentes(final List<Parente> Parentes, final AdapterParentes adapterParente) {
+    public static void listarParentes(final List<Parente> parentes, final AdapterParentes adapterParente, final ProgressBar progressBarParentes) {
 
+        parentes.clear();
         Query query = ParenteService.getDatabaseReference().orderByChild(NOME);
+        progressBarParentes.setVisibility(View.VISIBLE);
+
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Parentes.add(snapshot.getValue(Parente.class));
+                    parentes.add(snapshot.getValue(Parente.class));
                 }
 
                 adapterParente.notifyDataSetChanged();
+                progressBarParentes.setVisibility(View.GONE);
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                progressBarParentes.setVisibility(View.GONE);
 
             }
         });
@@ -46,10 +55,10 @@ public class ParenteService {
     public static  void salvarAtualizarParente(Parente parente){
 
         if(parente.getId() != null){
-
-        }
+            getDatabaseReference().child(parente.getId()).setValue(parente);
+        }else{
         parente.setId(getDatabaseReference().push().getKey());
-        getDatabaseReference().child(parente.getId()).setValue(parente);
+        getDatabaseReference().child(parente.getId()).setValue(parente);}
     }
 
     public static DatabaseReference getDatabaseReference() {

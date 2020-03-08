@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -39,12 +40,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class CartaoFragment extends Fragment {
 
     public static final String STRING_VAZIA = "";
+    public static final String PARENTE = "Parente";
     private TextView textViewNome, textViewParentesco;
     private CircleImageView circleImageView;
     private RecyclerView recyclerViewParentes;
     private AdapterParentes adapterParentes;
     private List<Parente> parentes = new ArrayList<>();
     private Button buttonCadastrarParente;
+    private ProgressBar progressBarParentes;
     public CartaoFragment() {
         // Required empty public constructor
     }
@@ -63,6 +66,7 @@ public class CartaoFragment extends Fragment {
         circleImageView = view.findViewById(R.id.imageView_foto_cartao);
         recyclerViewParentes = view.findViewById(R.id.recycleView_Parentes);
         buttonCadastrarParente = view.findViewById(R.id.button_add_parente);
+        progressBarParentes = view.findViewById(R.id.progressBar_parentes);
 
 
         buttonCadastrarParente.setOnClickListener(new View.OnClickListener() {
@@ -77,10 +81,23 @@ public class CartaoFragment extends Fragment {
         textViewNome.setText(UsuarioService.getUsuarioLogado().getDisplayName());
         textViewParentesco.setText(STRING_VAZIA);
         configurarRecycleView(view);
-        ParenteService.listarParentes(parentes,adapterParentes);
+        ParenteService.listarParentes(parentes,adapterParentes,progressBarParentes);
         
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+
+        ParenteService.listarParentes(parentes,adapterParentes,progressBarParentes);
+        super.onResume();
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 
     private void configurarRecycleView(View view) {
@@ -103,6 +120,8 @@ public class CartaoFragment extends Fragment {
 
             @Override
             public void onLongItemClick(View view, int position) {
+                startActivity(new Intent(getContext(), CadastroParenteActivity.class).putExtra(PARENTE,parentes.get(position)));
+
 
             }
 
