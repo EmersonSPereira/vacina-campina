@@ -61,6 +61,10 @@ public class ParenteService {
         getDatabaseReference().child(parente.getId()).setValue(parente);}
     }
 
+    public static void excluirParente(String id){
+        getDatabaseReference().child(id).removeValue();
+    }
+
     public static DatabaseReference getDatabaseReference() {
 
         return FirebaseConfig.getFirebaseDatabase().getReference(PARENTE).child(UsuarioService.getUsuarioLogado().getUid());

@@ -1,9 +1,11 @@
 package br.com.vacinacampina.fragment;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,6 +43,8 @@ public class CartaoFragment extends Fragment {
 
     public static final String STRING_VAZIA = "";
     public static final String PARENTE = "Parente";
+    public static final int EDITAR = 0;
+    public static final int DELETAR = 1;
     private TextView textViewNome, textViewParentesco;
     private CircleImageView circleImageView;
     private RecyclerView recyclerViewParentes;
@@ -120,7 +124,33 @@ public class CartaoFragment extends Fragment {
 
             @Override
             public void onLongItemClick(View view, int position) {
-                startActivity(new Intent(getContext(), CadastroParenteActivity.class).putExtra(PARENTE,parentes.get(position)));
+                final int posicao = position;
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle(R.string.acao)
+                        .setItems(R.array.lista_acoes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which) {
+                                    case EDITAR:
+                                        startActivity(new Intent(getContext(), CadastroParenteActivity.class).putExtra(PARENTE, parentes.get(posicao)));
+                                        break;
+                                    case DELETAR:
+                                        new AlertDialog.Builder(getActivity()).setMessage(R.string.remover_parente_msg)
+                                                .setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        ParenteService.excluirParente(parentes.get(posicao).getId());
+                                                        ParenteService.listarParentes(parentes, adapterParentes, progressBarParentes);
+                                                    }
+                                                })
+                                                .setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        dialog.cancel();
+                                                    }
+                                                }).show();
+
+                                }
+                            }
+                        });
+                builder.show();
 
 
             }

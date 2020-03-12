@@ -70,6 +70,10 @@
     <string name="parentesco">Parentesco</string>
     <string name="parentes">Parentes</string>
     <string name="add_parente">+</string>
+    <string name="acao">Escolha uma ação</string>
+    <string name="remover_parente_msg">Tem certeza que deseja remover esse parente da sua lista?</string>
+    <string name="sim">Sim</string>
+    <string name="cancelar">Cancelar</string>
 
     <string-array name="lista_parentes">
         <item>Grau de Parentesco</item>
@@ -82,5 +86,10 @@
         <item>Avõ</item>
         <item>Neto</item>
         <item>Sobrinho</item>
+    </string-array>
+    <string-array name="lista_acoes">
+        <item>Editar</item>
+        <item>Excluir</item>
+
     </string-array>
 </resources>
