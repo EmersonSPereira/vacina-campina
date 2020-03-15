@@ -21,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +52,7 @@ public class CartaoFragment extends Fragment {
     private RecyclerView recyclerViewParentes;
     private AdapterParentes adapterParentes;
     private List<Parente> parentes = new ArrayList<>();
-    private Button buttonCadastrarParente;
+    private FloatingActionButton buttonCadastrarParente;
     private ProgressBar progressBarParentes;
     public CartaoFragment() {
         // Required empty public constructor
@@ -84,7 +85,7 @@ public class CartaoFragment extends Fragment {
 
         Glide.with(view).load(UsuarioService.getUsuarioLogado().getPhotoUrl()).into(circleImageView);
         textViewNome.setText(UsuarioService.getUsuarioLogado().getDisplayName());
-        textViewParentesco.setText(STRING_VAZIA);
+        textViewParentesco.setText("Parentes");
         configurarRecycleView(view);
         ParenteService.listarParentes(parentes,adapterParentes,progressBarParentes);
         
