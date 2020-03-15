@@ -1,10 +1,15 @@
 package br.com.vacinacampina.service;
 
+import android.app.Activity;
+import android.content.Context;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -65,6 +70,20 @@ public class CartaoService {
             }
         });
 
+    }
+
+    public static void salvarAtualizarVacinaCartao(Cartao cartao, String parenteId,final ProgressBar progressBar, final Context context){
+        getDatabaseReference().child(parenteId).child(cartao.getId()).setValue(cartao).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(context,"Vacina Salva/Atualizada com sucesso!", Toast.LENGTH_LONG).show();
+                    ((Activity)context).finish();
+                }
+
+            }
+        });
     }
 
     public static DatabaseReference getDatabaseReference() {

@@ -1,23 +1,28 @@
 package br.com.vacinacampina.model;
 
+import com.google.firebase.database.Exclude;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Cartao implements Serializable {
 
     private String id;
     private String nomeVacina;
-    private LocalDate dataPrimeiraDose;
-    private LocalDate dataSegundaDose;
-    private LocalDate dataTerceiraDose;
+    @Exclude
+    private String dataPrimeiraDose;
+    private String dataSegundaDose;
+    private String dataTerceiraDose;
     private Integer doses;
 
     public Cartao() {
     }
 
-    public Cartao(String nomeVacina, LocalDate dataPrimeiraDose, LocalDate dataSegundaDose, LocalDate dataTerceiraDose, Integer doses) {
+    public Cartao(String nomeVacina, String dataPrimeiraDose, String dataSegundaDose, String dataTerceiraDose, Integer doses) {
         this.nomeVacina = nomeVacina;
         this.dataPrimeiraDose = dataPrimeiraDose;
         this.dataSegundaDose = dataSegundaDose;
@@ -33,27 +38,27 @@ public class Cartao implements Serializable {
         this.nomeVacina = nomeVacina;
     }
 
-    public LocalDate getDataPrimeiraDose() {
+    public String getDataPrimeiraDose() {
         return dataPrimeiraDose;
     }
 
-    public void setDataPrimeiraDose(LocalDate dataPrimeiraDose) {
+    public void setDataPrimeiraDose(String dataPrimeiraDose) {
         this.dataPrimeiraDose = dataPrimeiraDose;
     }
 
-    public LocalDate getDataSegundaDose() {
+    public String getDataSegundaDose() {
         return dataSegundaDose;
     }
 
-    public void setDataSegundaDose(LocalDate dataSegundaDose) {
+    public void setDataSegundaDose(String dataSegundaDose) {
         this.dataSegundaDose = dataSegundaDose;
     }
 
-    public LocalDate getDataTerceiraDose() {
+    public String getDataTerceiraDose() {
         return dataTerceiraDose;
     }
 
-    public void setDataTerceiraDose(LocalDate dataTerceiraDose) {
+    public void setDataTerceiraDose(String dataTerceiraDose) {
         this.dataTerceiraDose = dataTerceiraDose;
     }
 

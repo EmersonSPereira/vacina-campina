@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.VisualizarCartaoActivity"></activity>
+        <activity android:name=".activity.EditarVacinaActivity"></activity>
+        <activity android:name=".activity.VisualizarCartaoActivity" />
         <activity android:name=".activity.CadastroParenteActivity" />
         <activity android:name=".activity.VacinaDetalheActivity" />
         <activity android:name=".activity.EditarContaActivity" />

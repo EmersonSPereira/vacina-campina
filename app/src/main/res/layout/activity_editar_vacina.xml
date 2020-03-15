@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.EditarVacinaActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_datas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_nome">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="50dp">
+
+            <ProgressBar
+                android:id="@+id/progressBar_salvar_editar_vacina"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="75dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="75dp"
+                android:translationZ="100dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_editar_dose1"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="64dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="@string/dose_1"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editText_data_dose2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/data"
+                android:inputType="date"
+                app:layout_constraintBottom_toBottomOf="@+id/textView_editar_dose2"
+                app:layout_constraintEnd_toEndOf="@+id/editText_data_dose1"
+                app:layout_constraintStart_toStartOf="@+id/editText_data_dose1"
+                app:layout_constraintTop_toTopOf="@+id/textView_editar_dose2" />
+
+            <EditText
+                android:id="@+id/editText_data_dose3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/data"
+                android:inputType="date"
+                app:layout_constraintBottom_toBottomOf="@+id/textView_editar_dose3"
+                app:layout_constraintEnd_toEndOf="@+id/editText_data_dose2"
+                app:layout_constraintStart_toStartOf="@+id/editText_data_dose2"
+                app:layout_constraintTop_toTopOf="@+id/textView_editar_dose3" />
+
+            <TextView
+                android:id="@+id/textView_editar_dose2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="@string/dose_2"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/textView_editar_dose1"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textView_editar_dose1"
+                app:layout_constraintTop_toBottomOf="@+id/textView_editar_dose1" />
+
+            <TextView
+                android:id="@+id/textView_editar_dose3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="@string/dose_3"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/textView_editar_dose2"
+                app:layout_constraintStart_toStartOf="@+id/textView_editar_dose2"
+                app:layout_constraintTop_toBottomOf="@+id/textView_editar_dose2" />
+
+            <EditText
+                android:id="@+id/editText_data_dose1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="40dp"
+                android:autofillHints=""
+                android:editable="false"
+                android:ems="10"
+                android:hint="@string/data"
+                android:inputType="none"
+                app:layout_constraintBottom_toBottomOf="@+id/textView_editar_dose1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView_editar_dose1"
+                app:layout_constraintTop_toTopOf="@+id/textView_editar_dose1"
+                tools:targetApi="o" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_nome"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="47dp">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="@string/nome"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/button_editar_vacina_salvar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/round_button"
+        android:elevation="10dp"
+        android:text="@string/salvar"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_datas" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

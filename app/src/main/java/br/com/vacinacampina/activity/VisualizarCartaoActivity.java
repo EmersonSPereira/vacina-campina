@@ -35,6 +35,8 @@ import br.com.vacinacampina.service.ParenteService;
 public class VisualizarCartaoActivity extends AppCompatActivity {
 
     public static final String PARENTE = "Parente";
+    public static final String VACINA = "vacina";
+    public static final String ID_PARENTE = "idParente";
     private AdapterCartao adapterCartao;
     private RecyclerView recyclerViewCartaoVacinas;
     private ProgressBar progressBarListarCartao;
@@ -68,12 +70,12 @@ public class VisualizarCartaoActivity extends AppCompatActivity {
 
         }
 
+    }
 
-
-
-
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        CartaoService.listarcartoes(cartoes,adapterCartao,progressBarListarCartao,parente.getId());
     }
 
     private void configurarRecycleView() {
@@ -89,7 +91,7 @@ public class VisualizarCartaoActivity extends AppCompatActivity {
         recyclerViewCartaoVacinas.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerViewCartaoVacinas, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-
+                startActivity(new Intent(VisualizarCartaoActivity.this, EditarVacinaActivity.class).putExtra(VACINA,cartoes.get(position)).putExtra(ID_PARENTE, parente.getId()));
             }
 
             @Override
