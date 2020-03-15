@@ -28,6 +28,7 @@ import java.util.List;
 import br.com.vacinacampina.R;
 import br.com.vacinacampina.activity.CadastroParenteActivity;
 import br.com.vacinacampina.activity.VacinaDetalheActivity;
+import br.com.vacinacampina.activity.VisualizarCartaoActivity;
 import br.com.vacinacampina.adapter.AdapterParentes;
 import br.com.vacinacampina.adapter.AdapterVacina;
 import br.com.vacinacampina.config.RecyclerItemClickListener;
@@ -118,16 +119,14 @@ public class CartaoFragment extends Fragment {
         recyclerViewParentes.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), recyclerViewParentes, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-//                startActivity(new Intent(getContext(), VacinaDetalheActivity.class).putExtra(VACINA,vacinas.get(position)));
-
+                startActivity(new Intent(getContext(), VisualizarCartaoActivity.class).putExtra(PARENTE, parentes.get(position)));
             }
 
             @Override
             public void onLongItemClick(View view, int position) {
                 final int posicao = position;
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle(R.string.acao)
-                        .setItems(R.array.lista_acoes, new DialogInterface.OnClickListener() {
+                builder.setItems(R.array.lista_acoes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 switch (which) {
                                     case EDITAR:

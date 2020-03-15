@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView_status_dose3"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@string/status_vacina"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewDataDose3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewDataDose3"
+            app:layout_constraintTop_toTopOf="@+id/textViewDataDose3"
+            app:srcCompat="@drawable/erro" />
+
+        <ImageView
+            android:id="@+id/imageView_status_dose2"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@string/status_vacina"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewDataDose2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewDataDose2"
+            app:layout_constraintTop_toTopOf="@+id/textViewDataDose2"
+            app:srcCompat="@drawable/erro" />
+
+        <TextView
+            android:id="@+id/textViewDataDose1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_dose1"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_status_dose1"
+            app:layout_constraintStart_toEndOf="@+id/textView_dose1"
+            app:layout_constraintTop_toTopOf="@+id/textView_dose1" />
+
+        <TextView
+            android:id="@+id/textView_nome_vacina_cartao"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="36dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textAlignment="textStart"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.057"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_dose1"
+            android:layout_width="105dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/dose_1"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/textView_nome_vacina_cartao"
+            app:layout_constraintTop_toBottomOf="@+id/textView_nome_vacina_cartao" />
+
+        <TextView
+            android:id="@+id/textView_dose2"
+            android:layout_width="105dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/dose_2"
+            app:layout_constraintEnd_toEndOf="@+id/textView_dose1"
+            app:layout_constraintStart_toStartOf="@+id/textView_dose1"
+            app:layout_constraintTop_toBottomOf="@+id/textView_dose1" />
+
+        <TextView
+            android:id="@+id/textView_dose3"
+            android:layout_width="105dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="25dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/dose_3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView_dose2"
+            app:layout_constraintStart_toStartOf="@+id/textView_dose2"
+            app:layout_constraintTop_toBottomOf="@+id/textView_dose2" />
+
+        <TextView
+            android:id="@+id/textViewDataDose2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_dose2"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_status_dose2"
+            app:layout_constraintStart_toEndOf="@+id/textView_dose2"
+            app:layout_constraintTop_toTopOf="@+id/textView_dose2" />
+
+        <TextView
+            android:id="@+id/textViewDataDose3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_dose3"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_status_dose2"
+            app:layout_constraintStart_toEndOf="@+id/textView_dose3"
+            app:layout_constraintTop_toTopOf="@+id/textView_dose3" />
+
+        <ImageView
+            android:id="@+id/imageView_status_dose1"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@string/status_vacina"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewDataDose1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewDataDose1"
+            app:layout_constraintTop_toTopOf="@+id/textViewDataDose1"
+            app:srcCompat="@drawable/erro" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

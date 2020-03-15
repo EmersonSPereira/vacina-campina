@@ -74,6 +74,10 @@
     <string name="remover_parente_msg">Tem certeza que deseja remover esse parente da sua lista?</string>
     <string name="sim">Sim</string>
     <string name="cancelar">Cancelar</string>
+    <string name="dose_1">1° Dose :</string>
+    <string name="dose_2">2° Dose :</string>
+    <string name="dose_3">3° Dose :</string>
+    <string name="status_vacina">imagem do status da dose</string>
 
     <string-array name="lista_parentes">
         <item>Grau de Parentesco</item>

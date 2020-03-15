@@ -54,7 +54,7 @@ public class AdapterVacina extends RecyclerView.Adapter<AdapterVacina.MyviewHold
         public MyviewHolder(@NonNull View itemView) {
             super(itemView);
 
-            nome =  itemView.findViewById(R.id.textView_nome_vacina);
+            nome =  itemView.findViewById(R.id.textView_nome_vacina_cartao);
             descricao = itemView.findViewById(R.id.textView_desc_vacina);
         }
     }

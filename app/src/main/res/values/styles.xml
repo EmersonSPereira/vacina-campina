@@ -15,6 +15,13 @@
         <item name="colorAccent">#93EDF5</item>
     </style>
 
+    <style name="AppThemeNoActionBarToolbar" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FAFAFC</item>
+        <item name="colorPrimaryDark">#C8CACC</item>
+        <item name="colorAccent">#727272</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

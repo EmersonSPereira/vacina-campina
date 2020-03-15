@@ -25,7 +25,7 @@ public class VacinaDetalheActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vacina_detalhe);
 
-        textViewNomeVacina = findViewById(R.id.textView_nome_vacina);
+        textViewNomeVacina = findViewById(R.id.textView_nome_vacina_cartao);
         textViewPrevine = findViewById(R.id.textView_previne);
         textViewComposicao = findViewById(R.id.textView_composicao);
         textViewIndicacao = findViewById(R.id.textView_indicacao);

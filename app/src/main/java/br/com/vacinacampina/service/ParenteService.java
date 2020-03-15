@@ -15,6 +15,7 @@ import java.util.List;
 
 import br.com.vacinacampina.adapter.AdapterParentes;
 import br.com.vacinacampina.config.FirebaseConfig;
+import br.com.vacinacampina.model.Cartao;
 import br.com.vacinacampina.model.Parente;
 
 import static br.com.vacinacampina.service.VacinaService.NOME;
@@ -58,7 +59,9 @@ public class ParenteService {
             getDatabaseReference().child(parente.getId()).setValue(parente);
         }else{
         parente.setId(getDatabaseReference().push().getKey());
-        getDatabaseReference().child(parente.getId()).setValue(parente);}
+        getDatabaseReference().child(parente.getId()).setValue(parente);
+        CartaoService.salvarCartao(parente.getId());
+        }
     }
 
     public static void excluirParente(String id){

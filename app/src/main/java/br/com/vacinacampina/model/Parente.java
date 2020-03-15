@@ -9,7 +9,6 @@ public class Parente implements Serializable {
 
 
     private String id;
-    private List<Cartao> cartao;
     private String nome;
     private Double idade;
     private String parentesco;
@@ -21,14 +20,6 @@ public class Parente implements Serializable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public List<Cartao> getCartao() {
-        return cartao;
-    }
-
-    public void setCartao(List<Cartao> cartao) {
-        this.cartao = cartao;
     }
 
     public String getNome() {

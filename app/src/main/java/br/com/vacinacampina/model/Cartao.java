@@ -1,21 +1,24 @@
 package br.com.vacinacampina.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cartao {
+public class Cartao implements Serializable {
 
+    private String id;
     private String nomeVacina;
-    private Double idadeParaTomar;
     private LocalDate dataPrimeiraDose;
     private LocalDate dataSegundaDose;
     private LocalDate dataTerceiraDose;
     private Integer doses;
 
-    public Cartao(String nomeVacina, Double idadeParaTomar, LocalDate dataPrimeiraDose, LocalDate dataSegundaDose, LocalDate dataTerceiraDose, Integer doses) {
+    public Cartao() {
+    }
+
+    public Cartao(String nomeVacina, LocalDate dataPrimeiraDose, LocalDate dataSegundaDose, LocalDate dataTerceiraDose, Integer doses) {
         this.nomeVacina = nomeVacina;
-        this.idadeParaTomar = idadeParaTomar;
         this.dataPrimeiraDose = dataPrimeiraDose;
         this.dataSegundaDose = dataSegundaDose;
         this.dataTerceiraDose = dataTerceiraDose;
@@ -28,14 +31,6 @@ public class Cartao {
 
     public void setNomeVacina(String nomeVacina) {
         this.nomeVacina = nomeVacina;
-    }
-
-    public Double getIdadeParaTomar() {
-        return idadeParaTomar;
-    }
-
-    public void setIdadeParaTomar(Double idadeParaTomar) {
-        this.idadeParaTomar = idadeParaTomar;
     }
 
     public LocalDate getDataPrimeiraDose() {
@@ -70,25 +65,33 @@ public class Cartao {
         this.doses = doses;
     }
 
-    public List<Cartao> getVacinasSimples(){
+    public static List<Cartao> getVacinasSimples(){
         List<Cartao> cartaos = new ArrayList<>();
-        cartaos.add(new Cartao("BCG",0.0,null, null, null, 1));
-        cartaos.add(new Cartao("Hepatite B",0.0,null, null, null, 3));
-        cartaos.add(new Cartao("Penta/DTP",0.0,null, null, null, 3));
-        cartaos.add(new Cartao("Pneumocócia(conjugada",0.0,null, null, null, 3));
-        cartaos.add(new Cartao("Rotavirus Humano",0.0,null, null, null, 3));
-        cartaos.add(new Cartao("Meningocócia Conjugada",0.0,null, null, null, 2));
-        cartaos.add(new Cartao("Febre Amarela",0.0,null, null, null, 1));
-        cartaos.add(new Cartao("Hepatite A",0.0,null, null, null, 1));
-        cartaos.add(new Cartao("Triplice Viral",0.0,null, null, null, 1));
-        cartaos.add(new Cartao("Tetra Viral",0.0,null, null, null, 1));
-        cartaos.add(new Cartao("Varicela",0.0,null, null, null, 1));
-        cartaos.add(new Cartao("HPV",0.0,null, null, null, 1));
-        cartaos.add(new Cartao("Pneumocócica 23V",0.0,null, null, null, 1));
-        cartaos.add(new Cartao("Dupla Adulto",0.0,null, null, null, 1));
-        cartaos.add(new Cartao("DTPA",0.0,null, null, null, 1));
-        cartaos.add(new Cartao("Influenza",0.0,null, null, null, 1));
+        cartaos.add(new Cartao("BCG",null, null, null, 1));
+        cartaos.add(new Cartao("Hepatite B",null, null, null, 3));
+        cartaos.add(new Cartao("Penta/DTP",null, null, null, 3));
+        cartaos.add(new Cartao("Pneumocócia(conjugada",null, null, null, 3));
+        cartaos.add(new Cartao("Rotavirus Humano",null, null, null, 3));
+        cartaos.add(new Cartao("Meningocócia Conjugada",null, null, null, 2));
+        cartaos.add(new Cartao("Febre Amarela",null, null, null, 1));
+        cartaos.add(new Cartao("Hepatite A",null, null, null, 1));
+        cartaos.add(new Cartao("Triplice Viral",null, null, null, 1));
+        cartaos.add(new Cartao("Tetra Viral",null, null, null, 1));
+        cartaos.add(new Cartao("Varicela",null, null, null, 1));
+        cartaos.add(new Cartao("HPV",null, null, null, 1));
+        cartaos.add(new Cartao("Pneumocócica 23V",null, null, null, 1));
+        cartaos.add(new Cartao("Dupla Adulto",null, null, null, 1));
+        cartaos.add(new Cartao("DTPA",null, null, null, 1));
+        cartaos.add(new Cartao("Influenza",null, null, null, 1));
 
         return cartaos;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
