@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -15,7 +14,6 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import br.com.vacinacampina.R;
-import br.com.vacinacampina.fragment.CartaoFragment;
 import br.com.vacinacampina.model.Parente;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -31,6 +29,7 @@ public class AdapterParentes extends RecyclerView.Adapter<AdapterParentes.Myview
     public AdapterParentes(List<Parente> Parentes, Context context) {
         this.Parentes = Parentes;
         this.context = context;
+        setHasStableIds(true);
     }
 
     @NonNull
@@ -50,13 +49,25 @@ public class AdapterParentes extends RecyclerView.Adapter<AdapterParentes.Myview
            Glide.with(context).load(parente.getUrlFoto()).into(holder.imageView);
        }else {
            holder.imageView.setImageResource(R.drawable.profile);
+
        }
 
     }
 
+
     @Override
     public int getItemCount() {
         return Parentes.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
     public class  MyviewHolder extends  RecyclerView.ViewHolder {

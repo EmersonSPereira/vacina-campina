@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -47,13 +48,14 @@ public class CartaoFragment extends Fragment {
     public static final String PARENTE = "Parente";
     public static final int EDITAR = 0;
     public static final int DELETAR = 1;
-    private TextView textViewNome, textViewParentesco;
+    private TextView textViewNome, textViewParentesco,textView5;
     private CircleImageView circleImageView;
     private RecyclerView recyclerViewParentes;
     private AdapterParentes adapterParentes;
-    private List<Parente> parentes = new ArrayList<>();
+    private List<Parente> parentes ;
     private FloatingActionButton buttonCadastrarParente;
     private ProgressBar progressBarParentes;
+    private ImageView imageViewListaVazia;
     public CartaoFragment() {
         // Required empty public constructor
     }
@@ -63,16 +65,16 @@ public class CartaoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-
-//
         View view = inflater.inflate(R.layout.fragment_cartao, container, false);
         textViewNome = view.findViewById(R.id.textView_nome_cartao);
+        textView5 = view.findViewById(R.id.textView5);
         textViewParentesco= view.findViewById(R.id.textView_parentesco);
         circleImageView = view.findViewById(R.id.imageView_foto_cartao);
         recyclerViewParentes = view.findViewById(R.id.recycleView_Parentes);
         buttonCadastrarParente = view.findViewById(R.id.button_add_parente);
         progressBarParentes = view.findViewById(R.id.progressBar_parentes);
+        imageViewListaVazia = view.findViewById(R.id.imageView_Parentes_vazio);
+        parentes = new ArrayList<>();
 
 
         buttonCadastrarParente.setOnClickListener(new View.OnClickListener() {
@@ -82,12 +84,36 @@ public class CartaoFragment extends Fragment {
             }
         });
 
+        if(UsuarioService.getUsuarioLogado().getPhotoUrl() != null ){
+            Glide.with(view).load(UsuarioService.getUsuarioLogado().getPhotoUrl()).into(circleImageView);
 
-        Glide.with(view).load(UsuarioService.getUsuarioLogado().getPhotoUrl()).into(circleImageView);
+        }
         textViewNome.setText(UsuarioService.getUsuarioLogado().getDisplayName());
         textViewParentesco.setText("Parentes");
         configurarRecycleView(view);
         ParenteService.listarParentes(parentes,adapterParentes,progressBarParentes);
+
+        adapterParentes.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+
+
+            @Override
+            public void onChanged() {
+                super.onChanged();
+                checarParentesVazio();
+            }
+
+            void checarParentesVazio(){
+                if(adapterParentes.getItemCount() == 0){
+                    textView5.setVisibility(View.VISIBLE);
+                    imageViewListaVazia.setVisibility(View.VISIBLE);
+                    progressBarParentes.setVisibility(View.GONE);
+                }else {
+                    textView5.setVisibility(View.GONE);
+                    imageViewListaVazia.setVisibility(View.GONE);
+                }
+
+            }
+        });
         
 
         return view;
@@ -95,15 +121,9 @@ public class CartaoFragment extends Fragment {
 
     @Override
     public void onResume() {
-
-        ParenteService.listarParentes(parentes,adapterParentes,progressBarParentes);
         super.onResume();
+        ParenteService.listarParentes(parentes, adapterParentes, progressBarParentes);
 
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
     }
 
     private void configurarRecycleView(View view) {

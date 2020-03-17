@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,9 +25,13 @@ public class EditarVacinaActivity extends AppCompatActivity {
 
     public static final String VACINA = "vacina";
     public static final String ID_PARENTE = "idParente";
+    public static final int DIALOG_DATA_PRIMEIRA_DOSE = 1;
+    public static final int DIALOG_DATA_SEGUNDA_DOSE = 2;
+    public static final int DIALOG_DATA_TERCEIRA_DOSE = 3;
 
     private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
     private EditText editTextData1, editTextData2, editTextData3;
+    private TextView textViewNomeVacina;
     private ProgressBar progressBar;
     private Button buttonSalvar;
     private Cartao vacina;
@@ -47,6 +52,8 @@ public class EditarVacinaActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBar_salvar_editar_vacina);
 
+        textViewNomeVacina = findViewById(R.id.textView_nome_vacina_cartao);
+
         buttonSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +69,7 @@ public class EditarVacinaActivity extends AppCompatActivity {
         if( bundle != null) {
             vacina = (Cartao) bundle.getSerializable(VACINA);
             parenteId = bundle.getString(ID_PARENTE);
+            textViewNomeVacina.setText(vacina.getNomeVacina());
 
             if(vacina.getDoses().equals(1)){
 
@@ -85,7 +93,7 @@ public class EditarVacinaActivity extends AppCompatActivity {
         editTextData1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogExibido = 1;
+                dialogExibido = DIALOG_DATA_PRIMEIRA_DOSE;
                 calendarSetado =  Calendar.getInstance();
                 if(vacina.getDataPrimeiraDose() != null && !vacina.getDataPrimeiraDose().isEmpty()){
                     try {
@@ -100,7 +108,7 @@ public class EditarVacinaActivity extends AppCompatActivity {
         editTextData2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogExibido = 2;
+                dialogExibido = DIALOG_DATA_SEGUNDA_DOSE;
                 calendarSetado =  Calendar.getInstance();
                 if(vacina.getDataSegundaDose() != null && !vacina.getDataSegundaDose().isEmpty()){
                     try {
@@ -115,7 +123,7 @@ public class EditarVacinaActivity extends AppCompatActivity {
         editTextData3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogExibido = 3;
+                dialogExibido = DIALOG_DATA_TERCEIRA_DOSE;
                 calendarSetado =  Calendar.getInstance();
                 if(vacina.getDataTerceiraDose() != null && !vacina.getDataTerceiraDose().isEmpty()){
                     try {
@@ -139,9 +147,9 @@ public class EditarVacinaActivity extends AppCompatActivity {
             vacina.setDataPrimeiraDose(editTextData1.getText() != null && !editTextData1.getText().toString().isEmpty()
                     ? editTextData1.getText().toString(): null);
             vacina.setDataSegundaDose(editTextData2.getText() != null && !editTextData2.getText().toString().isEmpty()
-                    ? editTextData1.getText().toString(): null);
+                    ? editTextData2.getText().toString(): null);
             vacina.setDataTerceiraDose(editTextData3.getText() != null && !editTextData3.getText().toString().isEmpty()
-                    ? editTextData1.getText().toString(): null);
+                    ? editTextData3.getText().toString(): null);
 
 
 

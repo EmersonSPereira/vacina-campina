@@ -15,7 +15,6 @@ import java.util.List;
 
 import br.com.vacinacampina.adapter.AdapterParentes;
 import br.com.vacinacampina.config.FirebaseConfig;
-import br.com.vacinacampina.model.Cartao;
 import br.com.vacinacampina.model.Parente;
 
 import static br.com.vacinacampina.service.VacinaService.NOME;
@@ -36,7 +35,9 @@ public class ParenteService {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    parentes.add(snapshot.getValue(Parente.class));
+                  Parente parente = snapshot.getValue(Parente.class);
+                   if(!parentes.contains(parente))
+                        parentes.add(parente);
                 }
 
                 adapterParente.notifyDataSetChanged();
