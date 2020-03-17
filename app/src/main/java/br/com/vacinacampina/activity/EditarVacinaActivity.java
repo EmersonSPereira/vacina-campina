@@ -52,7 +52,7 @@ public class EditarVacinaActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBar_salvar_editar_vacina);
 
-        textViewNomeVacina = findViewById(R.id.textView_nome_vacina_cartao);
+        textViewNomeVacina = findViewById(R.id.textView_titulo_vacina);
 
         buttonSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,13 +80,13 @@ public class EditarVacinaActivity extends AppCompatActivity {
             } else if( vacina.getDoses().equals(2)){
 
                 editTextData1.setText(vacina.getDataPrimeiraDose() != null && !vacina.getDataPrimeiraDose().isEmpty() ? vacina.getDataPrimeiraDose(): null);
-                editTextData1.setText(vacina.getDataSegundaDose() != null && !vacina.getDataSegundaDose().isEmpty() ? vacina.getDataSegundaDose(): null);
+                editTextData2.setText(vacina.getDataSegundaDose() != null && !vacina.getDataSegundaDose().isEmpty() ? vacina.getDataSegundaDose(): null);
 
                 editTextData3.setEnabled(false);
             } else {
                 editTextData1.setText(vacina.getDataPrimeiraDose() != null && !vacina.getDataPrimeiraDose().isEmpty() ? vacina.getDataPrimeiraDose(): null);
-                editTextData1.setText(vacina.getDataSegundaDose() != null && !vacina.getDataSegundaDose().isEmpty() ? vacina.getDataSegundaDose(): null);
-                editTextData1.setText(vacina.getDataTerceiraDose() != null && !vacina.getDataTerceiraDose().isEmpty() ? vacina.getDataTerceiraDose(): null);
+                editTextData2.setText(vacina.getDataSegundaDose() != null && !vacina.getDataSegundaDose().isEmpty() ? vacina.getDataSegundaDose(): null);
+                editTextData3.setText(vacina.getDataTerceiraDose() != null && !vacina.getDataTerceiraDose().isEmpty() ? vacina.getDataTerceiraDose(): null);
             }
         }
 
