@@ -76,7 +76,7 @@ public class Cartao implements Serializable {
         cartaos.add(new Cartao("BCG",null, null, null, 1));
         cartaos.add(new Cartao("Hepatite B",null, null, null, 3));
         cartaos.add(new Cartao("Penta/DTP",null, null, null, 3));
-        cartaos.add(new Cartao("Pneumocócia(conjugada",null, null, null, 3));
+        cartaos.add(new Cartao("Pneumocócia(conjugada)",null, null, null, 3));
         cartaos.add(new Cartao("Rotavirus Humano",null, null, null, 3));
         cartaos.add(new Cartao("Meningocócia Conjugada",null, null, null, 2));
         cartaos.add(new Cartao("Febre Amarela",null, null, null, 1));

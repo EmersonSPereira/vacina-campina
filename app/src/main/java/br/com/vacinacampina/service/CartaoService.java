@@ -55,7 +55,10 @@ public class CartaoService {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    cartoes.add(snapshot.getValue(Cartao.class));
+                    Cartao vacina = snapshot.getValue(Cartao.class);
+                    if(!cartoes.contains(vacina)) {
+                        cartoes.add(vacina);
+                    }
                 }
 
                 adapterCartao.notifyDataSetChanged();
@@ -84,6 +87,9 @@ public class CartaoService {
 
             }
         });
+    }
+    public static void excluirCartao(String id){
+        getDatabaseReference().child(id).removeValue();
     }
 
     public static DatabaseReference getDatabaseReference() {

@@ -28,6 +28,7 @@ import br.com.vacinacampina.R;
 import br.com.vacinacampina.activity.login.LoginActivity;
 import br.com.vacinacampina.config.FirebaseConfig;
 import br.com.vacinacampina.model.Usuario;
+import br.com.vacinacampina.service.CartaoService;
 import br.com.vacinacampina.service.UsuarioService;
 
 public class CadastroActivity extends AppCompatActivity {
@@ -85,6 +86,7 @@ public class CadastroActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             enviarEmailVerificacao();
                             UsuarioService.atualizarUsuario(usuario.getNome(), CadastroActivity.this);
+                            CartaoService.salvarCartao(UsuarioService.getUsuarioLogado().getUid());
                         } else {
                             progressBar.setVisibility(View.GONE);
                             try {

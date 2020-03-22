@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,6 +36,7 @@ import br.com.vacinacampina.adapter.AdapterParentes;
 import br.com.vacinacampina.adapter.AdapterVacina;
 import br.com.vacinacampina.config.RecyclerItemClickListener;
 import br.com.vacinacampina.model.Parente;
+import br.com.vacinacampina.service.CartaoService;
 import br.com.vacinacampina.service.ParenteService;
 import br.com.vacinacampina.service.UsuarioService;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -56,6 +58,7 @@ public class CartaoFragment extends Fragment {
     private FloatingActionButton buttonCadastrarParente;
     private ProgressBar progressBarParentes;
     private ImageView imageViewListaVazia;
+    private CardView cardView;
     public CartaoFragment() {
         // Required empty public constructor
     }
@@ -74,7 +77,15 @@ public class CartaoFragment extends Fragment {
         buttonCadastrarParente = view.findViewById(R.id.button_add_parente);
         progressBarParentes = view.findViewById(R.id.progressBar_parentes);
         imageViewListaVazia = view.findViewById(R.id.imageView_Parentes_vazio);
+        cardView = view.findViewById(R.id.include);
         parentes = new ArrayList<>();
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                carregarCartaoUsuarioLogado();
+            }
+        });
 
 
         buttonCadastrarParente.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +145,6 @@ public class CartaoFragment extends Fragment {
 
 
         adapterParentes = new AdapterParentes(parentes, getActivity());
-        recyclerViewParentes.addItemDecoration(new DividerItemDecoration(view.getContext(), LinearLayout.VERTICAL));
         recyclerViewParentes.setAdapter(adapterParentes);
 
         recyclerViewParentes.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), recyclerViewParentes, new RecyclerItemClickListener.OnItemClickListener() {
@@ -157,7 +167,9 @@ public class CartaoFragment extends Fragment {
                                         new AlertDialog.Builder(getActivity()).setMessage(R.string.remover_parente_msg)
                                                 .setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
                                                     public void onClick(DialogInterface dialog, int id) {
-                                                        ParenteService.excluirParente(parentes.get(posicao).getId());
+                                                        String idParente = parentes.get(posicao).getId();
+                                                        ParenteService.excluirParente(idParente);
+                                                        CartaoService.excluirCartao(idParente);
                                                         ParenteService.listarParentes(parentes, adapterParentes, progressBarParentes);
                                                     }
                                                 })
@@ -180,6 +192,15 @@ public class CartaoFragment extends Fragment {
 
             }
         }));
+    }
+
+    private void carregarCartaoUsuarioLogado(){
+
+        Parente usuarioLogado = new Parente();
+        usuarioLogado.setId(UsuarioService.getUsuarioLogado().getUid());
+        usuarioLogado.setNome(UsuarioService.getUsuarioLogado().getDisplayName());
+        startActivity(new Intent(getContext(), VisualizarCartaoActivity.class).putExtra(PARENTE, usuarioLogado));
+
     }
 
 }

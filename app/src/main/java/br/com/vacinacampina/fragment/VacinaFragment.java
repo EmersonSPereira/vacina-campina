@@ -67,6 +67,13 @@ public class VacinaFragment extends Fragment {
         configurarSearchView();
         VacinaService.listarVacinas(vacinas,adapterVacina,progressBar_vacina);
 
+        searchViewPesquisa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchViewPesquisa.onActionViewExpanded();
+            }
+        });
+
 
         return view;
     }
