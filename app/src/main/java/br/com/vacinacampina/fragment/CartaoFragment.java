@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.onesignal.OneSignal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +80,7 @@ public class CartaoFragment extends Fragment {
         imageViewListaVazia = view.findViewById(R.id.imageView_Parentes_vazio);
         cardView = view.findViewById(R.id.include);
         parentes = new ArrayList<>();
+        OneSignal.startInit(getContext()).init();
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override

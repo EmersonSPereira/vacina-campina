@@ -10,10 +10,12 @@ android {
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
+        manifestPlaceholders = [onesignal_app_id: "fe84741b-d9da-46e7-8c9f-c71b1c39cba7",
+                                onesignal_google_project_number: "511109174429c"]
     }
     buildTypes {
         release {
@@ -51,6 +53,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.1.0'
     implementation 'com.itextpdf:itext7-core:7.1.10'
     implementation 'com.itextpdf:html2pdf:2.1.7'
+
+    implementation 'com.onesignal:OneSignal:3.+@aar'
+    implementation 'com.google.android.gms:play-services-gcm:+'
+    implementation "com.google.android.gms:play-services-location:+"
 
 
 
