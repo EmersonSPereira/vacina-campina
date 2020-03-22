@@ -48,6 +48,9 @@ public class CadastroParenteActivity extends AppCompatActivity {
     public static final String PERFIL = "Perfil";
     public static final String JPEG = ".jpeg";
     public static final String PARENTE_SALVO_COM_SUCESSO = "Parente Salvo com Sucesso";
+    public static final String POR_FAVOR_ESCOLHA_UM_GRAU_DE_PARENTESCO = "Por favor escolha um grau de parentesco";
+    public static final String GRAU_DE_PARENTESCO = "Grau de Parentesco";
+    public static final String POR_FAVOR_DIGITE_UM_NOME_VÁLIDO = "Por favor digite um nome válido";
     private CircleImageView circleImageViewFoto;
     private EditText editTextNome;
     private Button buttonAlterFoto, buttonSalvar;
@@ -151,7 +154,7 @@ public class CadastroParenteActivity extends AppCompatActivity {
     private void salvarAlteracoes() {
         buttonSalvar.setEnabled(false);
         progressBarCadastroParente.setVisibility(View.VISIBLE);
-        if (imagem != null) {
+        if (imagem != null && validarCampos()) {
             //recupera dados da imagem para o firebase
             ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
             imagem.compress(Bitmap.CompressFormat.JPEG, 70, arrayOutputStream);
@@ -188,9 +191,8 @@ public class CadastroParenteActivity extends AppCompatActivity {
                                 parente.setParentesco(spinnerGrauParentesco.getSelectedItem().toString());
                                 ParenteService.salvarAtualizarParente(parente);
                                 progressBarCadastroParente.setVisibility(View.GONE);
-                                Toast.makeText(CadastroParenteActivity.this, PARENTE_SALVO_COM_SUCESSO,Toast.LENGTH_LONG ).show();
+                                Toast.makeText(CadastroParenteActivity.this, PARENTE_SALVO_COM_SUCESSO, Toast.LENGTH_LONG).show();
                                 CadastroParenteActivity.super.onBackPressed();
-
 
                             }
                         }
@@ -200,15 +202,28 @@ public class CadastroParenteActivity extends AppCompatActivity {
 
         }else {
 
+            if (validarCampos()) {
+                parente.setNome(editTextNome.getText().toString());
+                parente.setParentesco(spinnerGrauParentesco.getSelectedItem().toString());
 
-            parente.setNome(editTextNome.getText().toString());
-            parente.setParentesco(spinnerGrauParentesco.getSelectedItem().toString());
-
-            ParenteService.salvarAtualizarParente(parente);
-            progressBarCadastroParente.setVisibility(View.GONE);
-            Toast.makeText(CadastroParenteActivity.this, PARENTE_SALVO_COM_SUCESSO,Toast.LENGTH_LONG ).show();
-            CadastroParenteActivity.super.onBackPressed();
+                ParenteService.salvarAtualizarParente(parente);
+                progressBarCadastroParente.setVisibility(View.GONE);
+                Toast.makeText(CadastroParenteActivity.this, PARENTE_SALVO_COM_SUCESSO, Toast.LENGTH_LONG).show();
+                CadastroParenteActivity.super.onBackPressed();
+            } else if(spinnerGrauParentesco.getSelectedItem().toString().equals(GRAU_DE_PARENTESCO)) {
+                buttonSalvar.setEnabled(true);
+                progressBarCadastroParente.setVisibility(View.GONE);
+                Toast.makeText(CadastroParenteActivity.this, POR_FAVOR_ESCOLHA_UM_GRAU_DE_PARENTESCO, Toast.LENGTH_LONG).show();
+            }else {
+                buttonSalvar.setEnabled(true);
+                progressBarCadastroParente.setVisibility(View.GONE);
+                Toast.makeText(CadastroParenteActivity.this, POR_FAVOR_DIGITE_UM_NOME_VÁLIDO, Toast.LENGTH_LONG).show();
+            }
         }
+    }
+
+    private boolean validarCampos() {
+        return !spinnerGrauParentesco.getSelectedItem().toString().equals(GRAU_DE_PARENTESCO) && !editTextNome.getText().toString().isEmpty();
     }
 
 

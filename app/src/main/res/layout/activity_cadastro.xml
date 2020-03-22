@@ -11,13 +11,15 @@
     <TextView
         android:id="@+id/textView_ja_tenho_conta3"
         android:layout_width="wrap_content"
-        android:layout_height="24dp"
+        android:layout_height="0dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:onClick="btnEntrar"
         android:text="@string/textView_ja_tenho_conta"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_cadastrar" />

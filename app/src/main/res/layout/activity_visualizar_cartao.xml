@@ -46,6 +46,7 @@
         android:layout_marginBottom="10dp"
         android:clickable="true"
         android:focusable="true"
+        app:backgroundTint="@color/colorPrimary"
         app:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,6 +1,7 @@
 package br.com.vacinacampina.fragment;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -48,6 +50,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ContaFragment extends Fragment {
 
 
+    public static final int EDITAR_DADOS = 0;
+    public static final int SOBRE = 1;
+    public static final int SAIR = 2;
     private RecyclerView recyclerViewOpcoes;
     private TextView textViewEmail,textViewNome;
     private CircleImageView circleImageViewFoto;
@@ -93,10 +98,21 @@ public class ContaFragment extends Fragment {
                     public void onItemClick(View view, int position) {
 
                         switch (position){
-                            case 0 :
+                            case EDITAR_DADOS:
                                 startActivity(new Intent(getActivity() ,EditarContaActivity.class));
                                 break;
-                            case 1 :
+                            case SOBRE:
+                                new AlertDialog.Builder(getActivity())
+                                .setTitle(R.string.sobre)
+                                        .setMessage(R.string.mensagem_sobre).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                }).show();
+                                break;
+
+                            case SAIR:
                                 FirebaseConfig.getAuth().signOut();
                                 startActivity(new Intent(getActivity() , LoginActivity.class));
                                 break;
@@ -165,6 +181,7 @@ public class ContaFragment extends Fragment {
     private List<String> montaOpçõesMenu(){
         List opções = new ArrayList();
         opções.add(getString(R.string.editar_dados));
+        opções.add(getString(R.string.sobre));
         opções.add(getString(R.string.sair));
 
         return  opções;
