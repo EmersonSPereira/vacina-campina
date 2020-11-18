@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 
@@ -19,14 +21,25 @@ public class MainActivity extends IntroActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
         SharedPreferences myPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (!myPreferences.getBoolean(INTRO, false)) {
             exibeIntro(myPreferences);
         } else {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivityForResult(intent, 1);
+          //finaliza o slid e chama a activity de Login
+          finish();
+          startActivity(new Intent(this, LoginActivity.class));
+
         }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+                // Finished the intro
+                // Cancelled the intro. You can then e.g. finish this activity too.
+                finish();
     }
 
     private void exibeIntro(SharedPreferences myPreferences) {
