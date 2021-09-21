@@ -48,7 +48,7 @@
     <string name="sobre">Sobre</string>
     <string name="sair">Sair</string>
     <string name="ok">ok</string>
-    <string name="mensagem_sobre">Aplicatico desenvolvido por Emerson Sousa Pereira, aluno do curso de Ciências da Computação da Universidade Estadua da Paraíba (UEPB), como trabalho de conclusão de curso.</string>
+    <string name="mensagem_sobre">Aplicativo desenvolvido por Emerson Sousa Pereira, aluno do curso de Ciências da Computação da Universidade Estadua da Paraíba (UEPB), como trabalho de conclusão de curso.</string>
 
 
     <!--    Trazer todas as mensagens do sistema para ca-->
