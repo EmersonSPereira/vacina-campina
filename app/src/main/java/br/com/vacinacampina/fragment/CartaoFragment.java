@@ -4,23 +4,19 @@ package br.com.vacinacampina.fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -31,10 +27,8 @@ import java.util.List;
 
 import br.com.vacinacampina.R;
 import br.com.vacinacampina.activity.CadastroParenteActivity;
-import br.com.vacinacampina.activity.VacinaDetalheActivity;
 import br.com.vacinacampina.activity.VisualizarCartaoActivity;
 import br.com.vacinacampina.adapter.AdapterParentes;
-import br.com.vacinacampina.adapter.AdapterVacina;
 import br.com.vacinacampina.config.RecyclerItemClickListener;
 import br.com.vacinacampina.model.Parente;
 import br.com.vacinacampina.service.CartaoService;
@@ -46,6 +40,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * A simple {@link Fragment} subclass.
  */
 public class CartaoFragment extends Fragment {
+
+    private static final String ONESIGNAL_APP_ID = "fe84741b-d9da-46e7-8c9f-c71b1c39cba7";
+
 
     public static final String STRING_VAZIA = "";
     public static final String PARENTE = "Parente";
@@ -80,8 +77,12 @@ public class CartaoFragment extends Fragment {
         imageViewListaVazia = view.findViewById(R.id.imageView_Parentes_vazio);
         cardView = view.findViewById(R.id.include);
         parentes = new ArrayList<>();
-        OneSignal.startInit(getContext()).init();
+        // Enable verbose OneSignal logging to debug issues if needed.
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
 
+        // OneSignal Initialization
+        OneSignal.initWithContext(this.getContext());
+        OneSignal.setAppId(ONESIGNAL_APP_ID);
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

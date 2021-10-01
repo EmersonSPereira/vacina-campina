@@ -1,3 +1,7 @@
+plugins {
+    id 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+    // Other plugins here if pre-existing
+}
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
@@ -14,8 +18,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
-        manifestPlaceholders = [onesignal_app_id: "fe84741b-d9da-46e7-8c9f-c71b1c39cba7",
-                                onesignal_google_project_number: "511109174429c"]
+
     }
     buildTypes {
         release {
@@ -54,11 +57,10 @@ dependencies {
     implementation 'com.itextpdf:itext7-core:7.1.10'
     implementation 'com.itextpdf:html2pdf:2.1.7'
 
-    implementation 'com.onesignal:OneSignal:3.+@aar'
     implementation 'com.google.android.gms:play-services-gcm:+'
     implementation "com.google.android.gms:play-services-location:+"
 
-
+    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
 
     testImplementation group: 'androidx.test.ext', name: 'junit', version: '1.1.1'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
