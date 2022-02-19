@@ -19,7 +19,7 @@
           "client_type": 1,
           "android_info": {
             "package_name": "br.com.vacinacampina",
-            "certificate_hash": "d28fb5c6c581466d81fc2929f791c305c88cb472"
+            "certificate_hash": "YOUR_CERTIFICATE_HASH"
           }
         },
         {
@@ -29,7 +29,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBuRH2Ircl_owXS_jFo6N_U9aD0RY54v1Y"
+          "current_key": "YOUR_API_KEY"
         }
       ],
       "services": {
